@@ -38,7 +38,12 @@ abstract class UploadProcessAbstract
             $upload_file = $file;
         }
         elseif (is_array($file) && isset($file['name'])) {
-            $upload_file = new UploadedFile($file['tmp_name'], $file['name'], $file['type'], $file['size'], $file['error'], $file['test']);
+            if (empty($file['test'])) {
+                $file['test'] = false;
+            } else {
+                $file['test'] = true;
+            }
+            $upload_file = new UploadedFile($file['tmp_name'], $file['name'], $file['type'], $file['error'], $file['test']);
         }
         else {
             $upload_file = $this->uploader->getRequest()->file($file);

@@ -183,7 +183,7 @@ class Uploader extends UploaderAbstract
         }
 
         /* 检查文件大小 */
-        if (! $this->check_size($upload_file->getClientSize())) {
+        if (! $this->check_size($upload_file->getSize())) {
             $this->add_error('upload_file_size_not_match', __('上传文件大小不符！', 'royalcms-upload'));
             return false;
         }
