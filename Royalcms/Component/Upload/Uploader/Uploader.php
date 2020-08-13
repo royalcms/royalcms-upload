@@ -284,7 +284,7 @@ class Uploader extends UploaderAbstract
             $upload_file = $file;
         }
         elseif (is_array($file) && isset($file['name'])) {
-            $upload_file = new UploadedFile($file['tmp_name'], $file['name'], $file['type'], $file['size'], $file['error']);
+            $upload_file = new UploadedFile($file['tmp_name'], $file['name'], $file['type'], $file['error']);
         }
         else {
             $upload_file = $this->getRequest()->file($file);
